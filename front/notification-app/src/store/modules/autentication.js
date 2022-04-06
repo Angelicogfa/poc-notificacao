@@ -21,8 +21,8 @@ const mutations = {
         state.name = payload.name;
         state.error = null;
 
-        localStorage.setItem('token', state.name);
-        localStorage.setItem('name', state.token);
+        localStorage.setItem('token', state.token);
+        localStorage.setItem('name', state.name);
     },
     LOGOUT(state, error) {
         state.authenticated = false;

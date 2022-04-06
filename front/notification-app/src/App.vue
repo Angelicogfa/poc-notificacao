@@ -16,6 +16,7 @@ export default {
     })
   },
   beforeMount() {
+    console.log(process.env.VUE_APP_API_URL)
     this.restore();
   }
 }

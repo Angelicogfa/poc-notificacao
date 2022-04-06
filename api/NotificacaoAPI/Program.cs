@@ -7,15 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerConfiguration();
 builder.Services.AddDatabaseConfigurations(builder.Configuration);
 builder.Services.AddServiceBusConfiguration(builder.Configuration);
-builder.Services.AddBus(builder.Configuration);
 builder.Services.AddSignalRConfiguration(builder.Configuration);
-builder.Services.AddCustomSecurity(builder.Configuration);
+builder.Services.AddCustomAuthentication(builder.Configuration);
+builder.Services.AddCustomAuthorization();
 builder.Services.AddHostedService<ApplyMigrationsJob>();
+builder.Services.AddHostedService<NotifyUserToMessageJob>();
 
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using NotificacaoAPI.Hub;
+﻿using Microsoft.AspNetCore.SignalR;
+using NotificacaoAPI.Hub;
 
 namespace NotificacaoAPI.Configurations
 {
@@ -8,7 +9,7 @@ namespace NotificacaoAPI.Configurations
         {
             services.AddSignalR().AddJsonProtocol()
                 .AddAzureSignalR(configuration.GetConnectionString("SignalRNotification"));
-            services.AddSingleton((a) => new NotificationHub());
+            services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
 
             services.AddCors(opt => 
             {

@@ -16,17 +16,17 @@
 
 <script>
 import AppNotification from './AppNotification.vue'
-import { mapActions } from 'vuex'
+//import { mapActions } from 'vuex'
 
 export default {
     name: 'AppHeader',
     components: { AppNotification },
     methods: {
-        ...mapActions({
-            logout: 'autentication/logout'
-        }),
+        // ...mapActions({
+        //     logout: 'autentication/logout'
+        // }),
         clickLogout() {
-            this.logout();
+            this.$store.dispatch('reset', null, {root: true});
             this.$router.push('/login');
         }
     }
